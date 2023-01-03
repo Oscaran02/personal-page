@@ -16,7 +16,7 @@ def profile():
 @profile_bp.route("/update_server", methods=['GET', 'POST'])
 def webhook():
     if request.method == 'POST':
-        repo = git.Repo('/home/Oscaran02/personal_page')
+        repo = git.Repo('/home/Oscaran02/personal-page')
         origin = repo.remotes.origin
         origin.pull()
         return 'Update successful', 200
