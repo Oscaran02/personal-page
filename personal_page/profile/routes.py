@@ -10,7 +10,7 @@ profile_bp = Blueprint('profile', __name__, static_url_path="",
 
 @profile_bp.route("/")
 def profile():
-    return 'Hello World! This is an update, even if u dont think so'
+    return 'Hello World! This is an update, even if u dont think so. And another one, I hope this works'
 
 
 @profile_bp.route("/update_server", methods=['POST'])
