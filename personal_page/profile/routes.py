@@ -13,12 +13,13 @@ def profile():
     return 'Hello World! This is an update, even if u dont think so. And another one, I hope this works'
 
 
-@profile_bp.route("/update_server", methods=['POST'])
+@profile_bp.route("/update_server", methods=['GET', 'POST'])
 def webhook():
     if request.method == 'POST':
         repo = git.Repo('/home/Oscaran02/personal_page')
         origin = repo.remotes.origin
         origin.pull()
         return 'Update successful', 200
-    else:
-        return 'Wrong event type', 400
+    if request.method == 'GET':
+        return 'it is working', 200
+
