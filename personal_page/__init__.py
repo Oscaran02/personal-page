@@ -1,7 +1,5 @@
 from typing import Any
-
 from flask import Flask
-
 from flask_cors import CORS
 
 
@@ -17,9 +15,9 @@ def init_app(config_file_path: str = "settings.py", **config: Any) -> Flask:
     """ Flask context """
     with app.app_context():
         # Include our Routes
-        from .profile import profile_routes
+        from .profile import routes
 
         # Register Blueprints
-        app.register_blueprint(profile_routes.profile_bp)
+        app.register_blueprint(routes.profile_bp)
 
         return app
