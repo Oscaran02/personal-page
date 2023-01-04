@@ -13,13 +13,13 @@ def profile():
     return 'Exentric update'
 
 
-@profile_bp.route("/update_server", methods=['GET', 'POST'])
+@profile_bp.route("/update_server", methods=['POST'])
 def webhook():
     if request.method == 'POST':
         repo = git.Repo('/home/Oscaran02/personal-page')
+        x_hub_signature = request.headers.get("X-Hub-Signature")
+        if not models.is_valid_signature(x_hub_signature, request.data, app.config['SECRET_KEY']):
+            return 'Invalid signature', 401
         origin = repo.remotes.origin
         origin.pull()
         return 'Update successful', 200
-    if request.method == 'GET':
-        return 'it is working', 200
-
