@@ -10,9 +10,10 @@ profile_bp = Blueprint('profile', __name__, static_url_path="",
 
 @profile_bp.route("/")
 def profile():
-    return 'Exentric update'
+    return 'Esta es la base de algo grande, y no la pineapple'
 
 
+# Update the repo in GitHub and pull the changes to the server
 @profile_bp.route("/update_server", methods=['POST'])
 def webhook():
     if request.method == 'POST':
