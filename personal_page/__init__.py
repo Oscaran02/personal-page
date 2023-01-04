@@ -10,13 +10,6 @@ def init_app(config_file_path: str = "settings.py", **config: Any) -> Flask:
     app.config.from_pyfile(config_file_path)
     app.config.update(**config)
 
-    """Logging configuration"""
-    logging.basicConfig(filename='./logs/logs.log', level=logging.DEBUG,
-                        format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
-    app.logger.info('Info level log')
-    app.logger.warning('Warning level log')
-    app.logger.error('Error level log')
-
     """ Initialize Plugins """
     CORS(app)
 
