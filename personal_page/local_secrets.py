@@ -1,1 +1,0 @@
-SECRET_KEY = "this_is_a_secret_even_if_you_do_not_believe_so"
