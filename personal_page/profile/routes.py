@@ -19,6 +19,7 @@ def webhook():
     if request.method == 'POST':
         repo = git.Repo('/home/Oscaran02/personal-page')
         x_hub_signature = request.headers.get("X-Hub-Signature")
+        print(app.config['SECRET_KEY'])
         if not models.is_valid_signature(x_hub_signature, request.data, app.config['SECRET_KEY']):
             return 'Invalid signature', 401
         origin = repo.remotes.origin
