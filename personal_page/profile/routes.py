@@ -1,5 +1,6 @@
 from flask import render_template, redirect, url_for, request, Blueprint, current_app as app
 from . import models
+import os
 import git
 
 profile_bp = Blueprint('profile', __name__, static_url_path="",
@@ -19,7 +20,7 @@ def webhook():
     if request.method == 'POST':
         repo = git.Repo('/home/Oscaran02/personal-page')
         x_hub_signature = request.headers.get("X-Hub-Signature")
-        print("LA SECRET KEY ES: ", app.config['SECRET_KEY'])
+        print("LA SECRET KEY ES: ", os.environ.get("SECRET KEY"))
         if not models.is_valid_signature(x_hub_signature, request.data, app.config['SECRET_KEY']):
             return 'Invalid signature', 401
         origin = repo.remotes.origin
